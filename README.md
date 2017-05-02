@@ -1,4 +1,4 @@
-# Blank Rails Scaffold with Continuous Integration & Development
+# Blank Rails Scaffold with Continuous Integration & Development - for Pajtek
 
 It is well outside the scope of this README to explain the benefits of Continuous Integration and Continuous Deployment. If you're intrigued, start [here](http://www.agilemanifesto.org) and keep reading. Otherwise, here we goooooo
 
