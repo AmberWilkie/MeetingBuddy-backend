@@ -12,7 +12,7 @@ require "sprockets/railtie"
 
 Bundler.require(*Rails.groups)
 
-module BlankRailsScaffold
+module MeetingBuddy
   class Application < Rails::Application
     config.generators do |generate|
       generate.helper false
