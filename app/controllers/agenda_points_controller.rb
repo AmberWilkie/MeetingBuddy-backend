@@ -4,7 +4,6 @@ class AgendaPointsController < ApplicationController
   def index
     @agenda_points = @meeting.agenda_points
     render json: {agenda_points: @agenda_points}
-
   end
 
   private
