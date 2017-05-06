@@ -3,12 +3,13 @@ class MeetingsController < ApplicationController
 
   def index
     # should condition this to only meetings I'm invited to.
-    invites = Invite.all
-    @meetings = []
-    invites.each do |invite|
-      @meetings << invite.meeting
-    end
-    @meetings.uniq!
+    # invites = Invite.all
+    # @meetings = []
+    # invites.each do |invite|
+    #   @meetings << invite.meeting
+    # end
+    # @meetings.uniq!
+    @meetings = Meeting.all
   end
 
   def show
