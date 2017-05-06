@@ -83,4 +83,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.secret_key_base = 'it is a hack, relax'
+  Devise.secret_key = 'fuck this noise'
 end

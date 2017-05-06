@@ -45,4 +45,6 @@ DeviseTokenAuth.setup do |config|
   # If, however, you wish to integrate with legacy Devise authentication, you can
   # do so by enabling this flag. NOTE: This feature is highly experimental!
   # config.enable_standard_devise_support = false
+  config.secret_key = ENV['DEVISE_SECRET_KEY'] if Rails.env.production?
+  # config.secret_key = '4ecc4dcc01142ebd37e446bdaada78314e581c625798fc2951c510ca5414936a5c236ceade49870cfb0c3c4668742f46e3363a3651ba6ef486f08ada47c50bb7'
 end
