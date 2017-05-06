@@ -1,10 +1,11 @@
 class MeetingsController < ApplicationController
+  before_action :find_meeting, only: [:show, :update, :destroy]
+
   def index
     @meetings = Meeting.all
   end
 
   def show
-    @meeting = Meeting.find(params[:id])
   end
 
   def create
@@ -26,8 +27,6 @@ class MeetingsController < ApplicationController
   end
 
   def update
-    # obviously, we don't make Hack the only one who can make meetings... you know, later
-    @meeting = Meeting.find(params[:id])
     if @meeting.update(sanitized_params)
       render :show
     else
@@ -37,7 +36,19 @@ class MeetingsController < ApplicationController
     end
   end
 
+  def destroy
+    if @meeting.delete
+      render json: { status: 'success'}
+    else
+      render json: { status: 'error', message: @meeting.errors.full_messages }
+    end
+  end
+
   private
+
+  def find_meeting
+    @meeting = Meeting.find(params[:id])
+  end
 
   def sanitized_params
     params.permit(:title,
