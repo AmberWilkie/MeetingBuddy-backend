@@ -5,8 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.delete_all
 Meeting.delete_all
+User.delete_all
+
 user = User.create(first_name: 'Hack', last_name: 'Persson', email: 'hack@hack.com', password: 'password', password_confirmation: 'password', role: 'Hacker')
 meeting1 = Meeting.create(user: user, title: 'Startup Hack!', summary: 'In a tent, all day, hacking.', location: 'Circus Tent', time: Date.today, length: 400)
 meeting2 = Meeting.create(user: user, title: 'Beer Yoga', summary: 'Kind of like regular yoga, but with beer', location: 'the other Circus Tent', time: Date.today, length: 30)
