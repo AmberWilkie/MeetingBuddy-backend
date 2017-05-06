@@ -16,7 +16,10 @@ class VotesController < ApplicationController
     vote = Vote.find(params[:id])
     vote.vote = params[:vote]
     if vote.save
-      render json: { status: 'success' }
+      render json: { status: 'success',
+                     yes_votes: @agenda_point.votes.where(vote: true).count,
+                     no_votes: @agenda_point.votes.where(vote: false).count
+      }
     else
       render json: { status: 'errror',
                      message: vote.errors.full_messages
