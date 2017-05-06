@@ -1,10 +1,9 @@
 class InvitesController < ApplicationController
   before_action :get_meeting, only: [:create, :update]
+  before_action :get_user, only: [:create, :update]
 
   def create
-    # again, poor Hack has to go to a lot of meetings
-    @invite = Invite.where(meeting: @meeting, user: User.first).first
-    @invite.accepted = params[:accepted]
+    @invite = Invite.new(meeting: @meeting, user: @user)
     if @invite.save
       render json: { status: 'success'}
     else
@@ -13,8 +12,7 @@ class InvitesController < ApplicationController
   end
 
   def update
-    # again, poor Hack has to go to a lot of meetings
-    @invite = Invite.where(meeting: @meeting, user: User.first).first
+    @invite = Invite.where(meeting: @meeting, user: @user).first
     @invite.accepted = params[:accepted]
     if @invite.save
       render json: { status: 'success'}
@@ -27,5 +25,9 @@ class InvitesController < ApplicationController
 
   def get_meeting
     @meeting = Meeting.find(params[:meeting_id])
+  end
+
+  def get_user
+    @user = User.find(params[:user_id])
   end
 end

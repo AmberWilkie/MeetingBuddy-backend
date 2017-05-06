@@ -4,9 +4,6 @@ class MeetingsController < ApplicationController
   def index
     # should condition this to only meetings I'm invited to.
     invites = Invite.where(user: User.first)
-    # unless invites.is_a?(Array)
-    #   invites = [invites]
-    # end
     @meetings = []
     invites.each do |invite|
       @meetings << invite.meeting
