@@ -18,6 +18,7 @@ class MeetingsController < ApplicationController
       time += point.time
     end
     @meeting.length = time
+    get_participants
     if @meeting.save
       render :show
     else
@@ -63,15 +64,6 @@ class MeetingsController < ApplicationController
     end
   end
 
-  def participants
-    @meeting = Meeting.find(params[:meeting_id])
-    @participants = []
-    @meeting.invites.each do |invite|
-      @participants << invite.user
-    end
-    render :participants
-  end
-
   private
 
   def find_meeting
@@ -86,5 +78,12 @@ class MeetingsController < ApplicationController
                                     :user,
                                     :length
     )
+  end
+
+  def get_participants
+    @participants = []
+    @meeting.invites.each do |invite|
+      @participants << invite.user
+    end
   end
 end
