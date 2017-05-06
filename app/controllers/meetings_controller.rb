@@ -13,6 +13,18 @@ class MeetingsController < ApplicationController
   end
 
   def show
+    time = 0
+    @meeting.agenda_points.each do |point|
+      time += point.time
+    end
+    @meeting.length = time
+    if @meeting.save
+      render :show
+    else
+      render json: { status: 'error',
+                     message: @meeting.errors.full_messages
+      }
+    end
   end
 
   def create
