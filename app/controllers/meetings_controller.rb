@@ -5,8 +5,5 @@ class MeetingsController < ApplicationController
 
   def show
     @meeting = Meeting.find(params[:id])
-    render json: { meeting: @meeting,
-                   user: @meeting.user
-    }
   end
 end
