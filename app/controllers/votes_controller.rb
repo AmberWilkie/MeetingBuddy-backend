@@ -2,6 +2,7 @@ class VotesController < ApplicationController
   before_action :get_meeting_and_points
 
   def create
+    puts params
     vote = Vote.new(votable: @agenda_point, user: User.first, vote: params[:vote])
     if vote.save
       render json: { status: 'success',
