@@ -2,7 +2,16 @@ class MeetingsController < ApplicationController
   before_action :find_meeting, only: [:show, :update, :destroy]
 
   def index
-    @meetings = Meeting.all
+    # should condition this to only meetings I'm invited to.
+    invites = Invite.where(user: User.first)
+    # unless invites.is_a?(Array)
+    #   invites = [invites]
+    # end
+    @meetings = []
+    invites.each do |invite|
+      @meetings << invite.meeting
+    end
+    @meetings.uniq!
   end
 
   def show
