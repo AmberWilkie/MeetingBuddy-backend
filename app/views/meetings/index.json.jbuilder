@@ -1,5 +1,7 @@
 json.meetings @meetings.each do |meeting|
   json.meeting meeting
   json.user meeting.user
-  # json.accepted meeting.invites.where(user: User.first).first.accepted
+  unless meeting.invites.where(user: User.first).empty?
+    json.accepted meeting.invites.where(user: User.first).first.accepted
+  end
 end

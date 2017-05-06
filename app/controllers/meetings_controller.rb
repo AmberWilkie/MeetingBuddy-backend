@@ -57,9 +57,7 @@ class MeetingsController < ApplicationController
     @meeting.invites.each do |invite|
       @participants << invite.user
     end
-    render json: { status: 'success',
-                   participants: @participants
-    }
+    render :participants
   end
 
   private
