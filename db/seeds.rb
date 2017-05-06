@@ -22,6 +22,7 @@ agenda_point2 = AgendaPoint.create(body: 'Should we do beer yoga?', time: 1, use
 agenda_point1 = AgendaPoint.create(body: 'Jens should pitch the app.', time: 5, user:user, meeting: meeting2)
 
 agenda_point3 = AgendaPoint.create(body: 'Next year, the hack should be underwater.', time: 15, user:user, meeting: meeting1)
+agenda_point4 = AgendaPoint.create(body: 'More donuts for the hack.', time: 2, user:user, meeting: meeting1)
 
 invite = Invite.create(meeting: meeting1, user: user)
 invite2 = Invite.create(meeting: meeting1, user: user2)
