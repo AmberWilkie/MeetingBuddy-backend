@@ -3,7 +3,7 @@ class MeetingsController < ApplicationController
 
   def index
     # should condition this to only meetings I'm invited to.
-    invites = Invite.where(user: User.first)
+    invites = Invite.all
     @meetings = []
     invites.each do |invite|
       @meetings << invite.meeting
@@ -48,6 +48,17 @@ class MeetingsController < ApplicationController
     else
       render json: { status: 'error', message: @meeting.errors.full_messages }
     end
+  end
+
+  def participants
+    @meeting = Meeting.find(params[:meeting_id])
+    @participants = []
+    @meeting.invites.each do |invite|
+      @participants << invite.user
+    end
+    render json: { status: 'success',
+                   participants: @participants
+    }
   end
 
   private
