@@ -22,5 +22,14 @@ module MeetingBuddy
       generate.routing_specs false
       generate.controller_specs false
     end
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', headers: :any,
+                 methods: [:get, :post, :put],
+                 max_age: 0
+      end
+    end
   end
 end
