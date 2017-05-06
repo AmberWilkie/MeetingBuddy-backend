@@ -5,6 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Invite.delete_all
+Vote.delete_all
 AgendaPoint.delete_all
 Meeting.delete_all
 User.delete_all
@@ -20,4 +22,13 @@ agenda_point2 = AgendaPoint.create(body: 'Should we do beer yoga?', time: 1, use
 agenda_point1 = AgendaPoint.create(body: 'Jens should pitch the app.', time: 5, user:user, meeting: meeting2)
 
 agenda_point3 = AgendaPoint.create(body: 'Next year, the hack should be underwater.', time: 15, user:user, meeting: meeting1)
+
+invite = Invite.create(meeting: meeting1, user: user)
+invite2 = Invite.create(meeting: meeting1, user: user2)
+invite3 = Invite.create(meeting: meeting1, user: user3)
+
+invite4 = Invite.create(meeting: meeting2, user: user)
+invite5 = Invite.create(meeting: meeting2, user: user2)
+invite6 = Invite.create(meeting: meeting2, user: user3)
+
 
